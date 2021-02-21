@@ -48,9 +48,9 @@ During the second Long Shutdown (LS2) of the Large Hadron Collider (LHC), the AT
 \section{Multithreaded Histogramming in Reconstruction}
 
 \section{Histogram Postprocessing}
-It is frequently necessary to perform a processing step on a collected histogram in order to compute a desired result (for example, computing the mean of position residuals to detect problems with detector alignment). To enable multithread-safe filling of histograms, we require that histogram handling in reconstruction software consists entirely of accumulation operations. This implies that merging of histograms is a straightforward operation which merely 
+It is frequently necessary to perform a processing step on a collected histogram in order to compute a desired result (for example, computing the mean of position residuals to detect problems with detector alignment). To enable multithread-safe filling of histograms, we require that histogram handling in reconstruction software consists entirely of accumulation operations. This implies that merging of histograms is a straightforward operation which merely adds bin contents, and that the order in which events are processed is irrelevant to the final histogram that is produced. It is not in general possible to merge histograms resulting from postprocessing this way. In other contexts this is part of the \textit{map-reduce} paradigm, in which the map step is the collection of the input histograms and the reduction is the production of the postprocessed histograms.  In the new histogramming paradigm only the map step is compatible with running directly in reconstruction.
 
-In other contexts this is part of the \textit{map-reduce} paradigm, in which the map step is the collection of the histograms
+The Run 2 software did include the capacity to run arbitrary C++ ROOT or PyROOT code on histogram files, but did not provide any services
 
 \section{User Presentation}
 
